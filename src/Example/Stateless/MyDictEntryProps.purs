@@ -103,7 +103,7 @@ myDictionaryView = makeStateless myDictionaryViewClass $ \ cprops ->
   , children:
     ( Array.mapWithIndex -- construct the list of elements to be rended
       (\ i entry ->
-         { jsx: myDictEntryView (cprops{ props = MyDictEntryProps })
+         { jsx: myDictEntryView (cprops{ props = MyDictEntryProps {i, entry}})
          , word: entry.word
          }
       ) >>>
@@ -115,5 +115,4 @@ myDictionaryView = makeStateless myDictionaryViewClass $ \ cprops ->
       map (\ jsxWord -> jsxWord.jsx) -- extract the JSX values
     ) $
     state.myDictionary
-  } 
- 
+  }
